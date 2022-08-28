@@ -6,7 +6,7 @@ plugins {
 
 group = 'com.english'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '15'
+sourceCompatibility = '8'
 
 configurations {
 	compileOnly {
@@ -14,9 +14,15 @@ configurations {
 	}
 }
 
+
+
 repositories {
 	mavenCentral()
 	maven { url 'https://repo.spring.io/milestone' }
+}
+
+ext {
+	mapstructVersion = "1.5.2.Final"
 }
 
 dependencies {
@@ -32,6 +38,10 @@ dependencies {
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.springframework.security:spring-security-test'
+
+	implementation "org.mapstruct:mapstruct:${mapstructVersion}"
+	testImplementation "org.testng:testng:6.10", "org.easytesting:fest-assert:1.4"
+	annotationProcessor "org.mapstruct:mapstruct-processor:1.5.2.Final"
 }
 
 tasks.named('test') {
