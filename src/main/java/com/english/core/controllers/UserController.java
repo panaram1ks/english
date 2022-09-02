@@ -14,30 +14,12 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserController {
 
     private final UserService userService;
+    private final UserMapper userMapper;
 
     @GetMapping("/users/{id}")
     public UserDTO sayHello(@PathVariable("id") Long pid) {
         User user = userService.getUser(pid);
-        return UserMapper.INSTANCE.toDTO(user);
+        return userMapper.toDTO(user);
     }
 
-//    private UserDTO toDTO(User user) {
-//        Set<RoleDTO> rolesDTO = toDTO(user.getRoles());
-//        return UserDTO.builder()
-//                .id(user.getId())
-//                .email(user.getEmail())
-//                .roles(rolesDTO)
-//                .build();
-//    }
-//
-//    private Set<RoleDTO> toDTO(Set<Role> roles) {
-//        return roles.stream().map(role -> toDTO(role)).collect(Collectors.toSet());
-//    }
-//
-//    private RoleDTO toDTO(Role role) {
-//        return RoleDTO.builder()
-//                .id(role.getId())
-//                .name(role.getName())
-//                .build();
-//    }
 }
