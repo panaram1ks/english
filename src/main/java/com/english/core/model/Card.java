@@ -22,4 +22,8 @@ public class Card {
     @JoinColumn(name = "ru_word_id")
     private RuWord ruWord;
     private Long rating;
+
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "image_id")
+    private Image image;
 }
